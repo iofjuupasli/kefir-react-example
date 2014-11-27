@@ -1,0 +1,22 @@
+{
+  "name": "kefir-react-example",
+  "version": "0.0.0",
+  "authors": [
+    "iofjuupasli <iofjuupasli@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "kefir-react": "iofjuupasli/kefir-react",
+    "kefir": "~0.4.0",
+    "react": "~0.12.1"
+  }
+}

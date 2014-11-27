@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KefirConnect example</title>
+</head>
+<body>
+
+<script src="bower_components/react/react-with-addons.js"></script>
+<script src="bower_components/kefir/dist/kefir.js"></script>
+<script src="bower_components/kefir-react/KefirConnect.js"></script>
+
+<div id="application"></div>
+
+<script>
+var start = new Date();
+var userStream = Kefir.fromPoll(1, function () {
+    return {
+        name: 'Foo ' + (new Date() - start)
+    };
+});
+
+var userProperty = userStream.toProperty({
+    name: 'Foo Bar'
+});
+
+var MyComponent = React.createClass({
+    mixins: [KefirConnect(userProperty, 'user')],
+    render: function () {
+        return React.DOM.div(null, this.state.user.name);
+    }
+});
+
+React.render(
+    React.createElement(MyComponent),
+    document.getElementById('application')
+);
+</script>
+
+</body>
+</html>
