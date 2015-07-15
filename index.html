@@ -20,9 +20,11 @@ var userStream = Kefir.fromPoll(1, function () {
     };
 });
 
-var userProperty = userStream.toProperty({
-    name: 'Foo Bar'
-});
+var userProperty = userStream.toProperty(
+    function() {
+        return { name: 'Foo Bar' }
+    }
+);
 
 var MyComponent = React.createClass({
     mixins: [KefirConnect(userProperty, 'user')],
